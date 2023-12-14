@@ -16,12 +16,12 @@ class Clase_Proyectos
             $con->close();
         }
     }
-    public function uno($ProvinciasId)
+    public function uno($id_proyecto)
     {
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "SELECT * FROM `proyectos` WHERE ProvinciasId=$ProvinciasId";
+            $cadena = "SELECT * FROM `proyectos` WHERE id_proyecto=$id_proyecto";
             $result = mysqli_query($con, $cadena);
             return $result;
         } catch (Throwable $th) {
@@ -30,12 +30,12 @@ class Clase_Proyectos
             $con->close();
         }
     }
-    public function insertar($nombre_pro,$PaisesId)
+    public function insertar($nombre_pro,$id_empleado,$fecha_inicio,$fecha_fin)
     {
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "INSERT INTO `proyectos`(`nombre_pro`,PaisesId) VALUES ('$nombre_pro', $PaisesId)";
+            $cadena = "INSERT INTO `proyectos`(`nombre_pro`,id_empleado,`fecha_inicio`,`fecha_fin` ) VALUES ('$nombre_pro', $id_empleado,'$fecha_inicio','$fecha_fin')";
             $result = mysqli_query($con, $cadena);
             return 'ok';
         } catch (Throwable $th) {
@@ -44,12 +44,12 @@ class Clase_Proyectos
             $con->close();
         }
     }
-    public function actualizar($ProvinciasId, $PaisesId, $nombre_pro)
+    public function actualizar($id_proyecto,$nombre_pro,$id_empleado,$fecha_inicio,$fecha_fin)
     {
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "UPDATE `proyectos` SET `nombre_pro`='$nombre_pro', PaisesId=$PaisesId WHERE `ProvinciasId`='$ProvinciasId'";
+            $cadena = "UPDATE `proyectos` SET `nombre_pro`='$nombre_pro', id_empleado=$id_empleado,`fecha_inicio`=$fecha_inicio,`fecha_fin`=$fecha_fin WHERE `id_proyecto`='$id_proyecto'";
             $result = mysqli_query($con, $cadena);
             return "ok";
         } catch (Throwable $th) {
@@ -58,12 +58,12 @@ class Clase_Proyectos
             $con->close();
         }
     }
-    public function eliminar($ProvinciasId)
+    public function eliminar($id_proyecto)
     {
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "delete from proyectos where ProvinciasId=$ProvinciasId";
+            $cadena = "delete from proyectos where id_proyecto=$id_proyecto";
             $result = mysqli_query($con, $cadena);
             return "ok";
         } catch (Throwable $th) {
