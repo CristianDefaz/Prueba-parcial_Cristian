@@ -47,9 +47,7 @@ class Usuarios_Model {
             <button class='btn btn-danger' onclick='eliminar(${
               valor.UsuarioId
             })'>Eliminar</button>
-            <button class='btn btn-info' onclick='ver(${
-              valor.UsuarioId
-            })'>Ver</button>
+            
             </td></tr>
                 `;
       });

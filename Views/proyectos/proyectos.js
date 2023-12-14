@@ -28,9 +28,6 @@ var todos = () => {
             <button class='btn btn-danger' onclick='eliminar(${
               valor.id_proyecto
             })'>Eliminar</button>
-            <button class='btn btn-info' onclick='ver(${
-              valor.id_proyecto
-            })'>Ver</button>
             </td></tr>
                 `;
     });

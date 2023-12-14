@@ -68,8 +68,8 @@
                     <div class="form-group">
                         <label for="id_empleado">Empleado a cargo</label>
                         <select name="id_empleado" id="id_empleado"  class="form-control"></select>
-                        </div>
                     </div>
+                    
                     <div class="form-group">
                         <label for="fecha_inicio">Fecha inicio</label>
                         <input type="date" required class="form-control" id="fecha_inicio" name="fecha_inicio" placeholder="fecha de inicio de proyecto">
