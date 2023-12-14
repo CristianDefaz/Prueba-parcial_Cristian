@@ -12,14 +12,16 @@ $().ready(() => {
 
 var todos = () => {
   var html = "";
-  $.get("../../Controllers/provincias.controller.php?op=todos", (res) => {
+  $.get("../../Controllers/proyectos.controller.php?op=todos", (res) => {
     console.log(res);
     res = JSON.parse(res);
     $.each(res, (index, valor) => {
       html += `<tr>
                 <td>${index + 1}</td>
-                <td>${valor.Nombre}</td>
-                <td>${valor.pais}</td>
+                <td>${valor.nombre_pro}</td>
+                <td>${valor.nombre + " " + valor.apellido}</td>
+                <td>${valor.fecha_inicio}</td>
+                <td>${valor.fecha_fin}</td>
             <td>
             <button class='btn btn-success' onclick='editar(${
               valor.ProvinciasId
@@ -33,7 +35,7 @@ var todos = () => {
             </td></tr>
                 `;
     });
-    $("#tabla_paises").html(html);
+    $("#tabla_proyecto").html(html);
   });
 };
 
