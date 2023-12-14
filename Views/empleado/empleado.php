@@ -4,48 +4,50 @@
 
 
 <div class="row">
-        <div class="card w-100">
-            <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">Lista de empleado</h5>
+    <div class="card w-100">
+        <div class="card-body p-4">
+            <h5 class="card-title fw-semibold mb-4">Lista de empleado</h5>
 
-                <div class="table-responsive">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_empleado">
-                        Nuevo empleado
-                    </button>
-                    <table class="table text-nowrap mb-0 align-middle">
-                        <thead class="text-dark fs-4">
-                            <tr>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">#</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Cedula</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Nombre</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Apellido</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Cargo</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Salario Mensual</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">Fecha contrato</h6>
-                                </th>
+            <div class="table-responsive">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_empleado">
+                    Nuevo empleado
+                </button>
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">#</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Fotografia empleado</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Cedula</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Nombre</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Apellido</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Cargo</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Salario Mensual</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Fecha contrato</h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla_empleado">
 
-                            </tr>
-                        </thead>
-                        <tbody id="tabla_empleado">
-
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
+    </div>
 </div>
 
 <!-- Ventana Modal-->
@@ -67,15 +69,15 @@
                     <input type="hidden" name="id_empleado" id="id_empleado">
                     <div class="form-group">
 
-                       
-                    <div class="form-group">
-                        <label for="cedula">Cédula</label>
-                        <input type="text" onfocusout="algoritmo_cedula();cedula_repetida();" required class="form-control" id="cedula" name="cedula" placeholder="cedula">
-                        <div class="alert alert-danger d-none" role="alert" id="errorCedula">
+
+                        <div class="form-group">
+                            <label for="cedula">Cédula</label>
+                            <input type="text" onfocusout="algoritmo_cedula();cedula_repetida();" required class="form-control" id="cedula" name="cedula" placeholder="cedula">
+                            <div class="alert alert-danger d-none" role="alert" id="errorCedula">
+                            </div>
+                            <div class="alert alert-danger d-none" role="alert" id="CedulaRepetida">
+                            </div>
                         </div>
-                        <div class="alert alert-danger d-none" role="alert" id="CedulaRepetida">
-                        </div>
-                    </div>
 
                         <div class="form-group">
                             <label for="nombre">Nombre</label>
@@ -101,6 +103,11 @@
                             <label for="fecha_contratacion">Fecha contrato</label>
                             <input type="date" required class="form-control" id="fecha_contratacion" name="fecha_contratacion" placeholder="fecha_contratacion">
                         </div>
+                        <div class="form-group">
+                            <label for="imagen">Fotografia</label>
+                            <img id="img_producto" name="img_producto" class="card-img-top d-none" width="100" height="100" alt="">
+                            <input type="file" class="form-control" id="imagen" name="imagen" placeholder="Ingrese imagen">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -115,5 +122,4 @@
 
 <!-- <script src="empleado.controller.js"></script>
 <script src="empleado.model.js"></script> -->
-<script src="./empleado.controller.js"></script>
-<script src="./empleado.model.js"></script>
+<script src="./empleado.js"></script>

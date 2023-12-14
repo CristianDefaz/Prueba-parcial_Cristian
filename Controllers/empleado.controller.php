@@ -1,6 +1,8 @@
 <?php
 require_once('../Models/cls_empleado.model.php');
+require_once('../Models/cls.imagen.model.php');
 $empleado = new Clase_Empleado;
+$subirfoto = new SubirFoto;
 switch ($_GET["op"]) {
     case 'todos':
         $datos = array(); //defino un arreglo
@@ -24,8 +26,14 @@ switch ($_GET["op"]) {
         $cargo = $_POST["cargo"];
         $salario = $_POST["salario"];
         $fecha_contratacion = $_POST["fecha_contratacion"];
+        if ($_FILES['imagen'] != '') {
+            $imagen = $_FILES['imagen'];
+            $direccionimg = $subirfoto->guardar($imagen);
+            $imagen ='';
+            $imagen = $direccionimg;
+        }
         $datos = array(); //defino un arreglo
-        $datos = $empleado->insertar($cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion); //llamo al modelo de usuarios e invoco al procedimiento insertar
+        $datos = $empleado->insertar($cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion,$imagen); //llamo al modelo de usuarios e invoco al procedimiento insertar
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
     case 'actualizar':
@@ -36,8 +44,15 @@ switch ($_GET["op"]) {
         $cargo = $_POST["cargo"];
         $salario = $_POST["salario"];
         $fecha_contratacion = $_POST["fecha_contratacion"];
+       //procedimeinto para guardar la imagen en los archivos del proyecto
+       if ($_FILES['imagen'] != '') {
+        $imagen = $_FILES['imagen'];
+        $direccionimg = $subirfoto->guardar($imagen);
+        $imagen ='';
+        $imagen = $direccionimg;
+    }
         $datos = array(); //defino un arreglo
-        $datos = $empleado->actualizar($id_empleado, $cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion); //llamo al modelo de usuarios e invoco al procedimiento actualizar
+        $datos = $empleado->actualizar($id_empleado, $cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion,$imagen); //llamo al modelo de usuarios e invoco al procedimiento actualizar
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
     case 'eliminar':

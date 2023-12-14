@@ -30,12 +30,12 @@ class Clase_Empleado
             $con->close();
         }
     }
-    public function insertar($cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion)
+    public function insertar($cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion,$imagen)
     {
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "INSERT INTO `empleados`(`cedula`, `nombre`, `apellido`, `cargo`, `salario`, `fecha_contratacion`) VALUES ('$cedula','$nombre','$apellido','$cargo','$salario','$fecha_contratacion')";
+            $cadena = "INSERT INTO `empleados`(`cedula`, `nombre`, `apellido`, `cargo`, `salario`, `fecha_contratacion`,`imagen`) VALUES ('$cedula','$nombre','$apellido','$cargo','$salario','$fecha_contratacion','$imagen')";
             $result = mysqli_query($con, $cadena);
             return 'ok';
         } catch (Throwable $th) {
@@ -44,12 +44,12 @@ class Clase_Empleado
             $con->close();
         }
     }
-    public function actualizar($id_empleado, $cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion)
+    public function actualizar($id_empleado, $cedula, $nombre, $apellido, $cargo, $salario, $fecha_contratacion,$imagen)
     {
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "UPDATE `empleados` SET `cedula`='$cedula',`nombre`='$nombre',`apellido`='$apellido',`cargo`='$cargo',`salario`='$salario',`fecha_contratacion`='$fecha_contratacion' WHERE id_empleado=$id_empleado";
+            $cadena = "UPDATE `empleados` SET `cedula`='$cedula',`nombre`='$nombre',`apellido`='$apellido',`cargo`='$cargo',`salario`='$salario',`fecha_contratacion`='$fecha_contratacion',`imagen`='$imagen' WHERE id_empleado=$id_empleado";
             $result = mysqli_query($con, $cadena);
             return 'ok';
         } catch (Throwable $th) {
@@ -89,4 +89,5 @@ class Clase_Empleado
             $con->close();
         }
     }
+
 }
