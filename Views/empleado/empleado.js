@@ -91,7 +91,7 @@ var editar = async (id_empleado) => {
 var eliminar = (id_empleado) => {
   Swal.fire({
     title: "Empleado",
-    text: "Esta seguro de eliminar la provincia",
+    text: "¿Estás seguro de eliminar el empleado?",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#d33",
@@ -103,20 +103,26 @@ var eliminar = (id_empleado) => {
         "../../Controllers/empleado.controller.php?op=eliminar",
         { id_empleado: id_empleado },
         (res) => {
-          res = JSON.parse(res);
-          if (res === "ok") {
-            Swal.fire("Empleado", "Empleado Eliminado", "success");
-            todos();
-          } else {
-            Swal.fire("Error", res, "error");
+          try {
+            res = JSON.parse(res);
+            if (res === "ok") {
+              Swal.fire("Empleado", "Empleado Eliminado", "success");
+              todos();
+            } else {
+              Swal.fire("Error al Eliminar", res.message || "El empleado esta registrado en un proyecto", "error");
+            }
+          } catch (error) {
+            console.error("Error al parsear la respuesta JSON:", error);
+            Swal.fire("Error", "Error al procesar la respuesta del servidor", "error");
           }
         }
       );
     }
   });
 
-  impia_Cajas();
+  limpia_Cajas();
 };
+
 
 
 

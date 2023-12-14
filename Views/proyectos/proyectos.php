@@ -67,9 +67,8 @@
                     </div>
                     <div class="form-group">
                         <label for="id_empleado">Empleado a cargo</label>
-                        <select name="id_empleado" id="id_empleado" class="form-control">
-                            <option value="0">Seleccione un pais</option>
-                        </select>
+                        <select name="id_empleado" id="id_empleado"  class="form-control"></select>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="fecha_inicio">Fecha inicio</label>

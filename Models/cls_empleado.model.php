@@ -16,6 +16,21 @@ class Clase_Empleado
             $con->close();
         }
     }
+
+    public function todos1()
+    {
+        try {
+            $con = new Clase_Conectar_Base_Datos();
+            $con = $con->ProcedimientoConectar();
+            $cadena = "SELECT empleados.* FROM empleados LEFT JOIN proyectos ON empleados.id_empleado = proyectos.id_empleado WHERE proyectos.id_empleado IS NULL"; 
+            $result = mysqli_query($con, $cadena);
+            return $result;
+        } catch (Throwable $th) {
+            return $th->getMessage();
+        } finally {
+            $con->close();
+        }
+    }
     public function uno($id_empleado)
     {
         try {

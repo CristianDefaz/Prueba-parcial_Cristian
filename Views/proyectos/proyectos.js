@@ -69,7 +69,7 @@ var guardaryeditar = (e) => {
 
 var cargaempleados= () => {
   return new Promise((resolve, reject) => {
-    $.post("../../Controllers/empleado.controller.php?op=todos", (res) => {
+    $.post("../../Controllers/empleado.controller.php?op=todos1", (res) => {
       res = JSON.parse(res);
       var html = "";
       $.each(res, (index, val) => {
@@ -139,4 +139,6 @@ var limpia_Cajas = () => {
   document.getElementById("fecha_fin").value = "";
   $("#Modal_proyecto").modal("hide");
 };
+
+
 init();

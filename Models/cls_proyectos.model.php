@@ -72,7 +72,4 @@ class Clase_Proyectos
             $con->close();
         }
     }
-
-
-
 }

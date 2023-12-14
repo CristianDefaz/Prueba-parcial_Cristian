@@ -42,4 +42,6 @@ switch ($_GET["op"]) {
         $datos = $proyecto->eliminar($id_proyecto); //llamo al modelo de usuarios e invoco al procedimiento uno y almaceno en una variable
         echo json_encode($datos); //devuelvo el arreglo en formato json
         break;
+
+
 }
