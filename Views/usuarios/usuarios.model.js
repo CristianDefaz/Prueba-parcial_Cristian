@@ -196,11 +196,11 @@ class Usuarios_Model {
         );
       }
     });
-
     this.limpia_Cajas();
   }
 
   limpia_Cajas() {
+    document.getElementById("UsuarioId").value = "";
     document.getElementById("Cedula").value = "";
     document.getElementById("Nombres").value = "";
     document.getElementById("Apellidos").value = "";

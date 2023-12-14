@@ -126,3 +126,66 @@
 
 <script src="usuarios.controller.js"></script>
 <script src="usuarios.model.js"></script>
+<script>
+            /*-------------------------------------------------------------solo letras------------------------------------*/
+            // Función para bloquear la entrada de números en un campo de texto
+            function blockNumbersInput(inputElement) {
+                inputElement.addEventListener('keydown', (event) => {
+                    // Obtener el código de la tecla pulsada
+                    const keyCode = event.which || event.keyCode;
+
+                    // Permitir las teclas de control (por ejemplo, las teclas de flecha, retroceso, etc.)
+                    if (event.ctrlKey || event.altKey || event.metaKey || keyCode === 8 || keyCode === 9) {
+                        return;
+                    }
+
+                    // Bloquear la entrada si la tecla es un número (códigos de teclas del 0 al 9 y teclado numérico)
+                    if ((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105)) {
+                        event.preventDefault();
+                    }
+                });
+            }
+
+            // Obtener la referencia a los elementos de entrada de nombres y apellidos
+            const nombreInputElement = document.getElementById('Nombres');
+            const apellidoInputElement = document.getElementById('Apellidos');
+
+            // Aplicar la restricción de no permitir números en ambos campos
+            blockNumbersInput(nombreInputElement);
+            blockNumbersInput(apellidoInputElement);
+
+
+            /*-------------------------------------------------------------solo numeross------------------------------------*/
+
+            // Función para bloquear la entrada que no sea números en un campo de texto
+            function blockNonNumbersInput(inputElement) {
+                inputElement.addEventListener('keydown', (event) => {
+                    // Obtener el código de la tecla pulsada
+                    const keyCode = event.which || event.keyCode;
+
+                    // Permitir las teclas de control (por ejemplo, las teclas de flecha, retroceso, etc.)
+                    if (event.ctrlKey || event.altKey || event.metaKey || keyCode === 8 || keyCode === 9) {
+                        return;
+                    }
+
+                    // Bloquear la entrada si la tecla no es un número (códigos de teclas del 0 al 9 y teclado numérico)
+                    if (!((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105))) {
+                        event.preventDefault();
+                    }
+                });
+            }
+
+            // Obtener la referencia a los elementos de entrada de nombres y apellidos
+            const cedulaInputElement = document.getElementById('Cedula');
+            const telefonoInputElement = document.getElementById('Telefono');
+
+
+            // Aplicar la restricción de solo permitir números en ambos campos
+            blockNonNumbersInput(cedulaInputElement);
+            blockNonNumbersInput(telefonoInputElement);
+
+
+       
+
+            /*-------------------------------------------------------------FIN------------------------------------*/
+        </script>
