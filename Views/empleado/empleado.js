@@ -81,6 +81,7 @@ var editar = async (id_empleado) => {
       $("#cargo").val(res.cargo);
       $("#salario").val(res.salario);
       $("#fecha_contratacion").val(res.fecha_contratacion); 
+      $("#imagen").val(res.fecha_contratacion); 
      // $("#id_empleado").val(res.id_empleado);
       //document.getElementById("id_empleado").value = res.PaisesId;
     }

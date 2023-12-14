@@ -52,24 +52,7 @@
                 <span class="hide-menu">Proyectos</span>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="productos/productos.php" target="base" aria-expanded="false">
-                <span>
-                  <i class="ti ti-file-description"></i>
-                </span>
-                <span class="hide-menu">P3</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-typography"></i>
-                </span>
-                <span class="hide-menu">p4</span>
-              </a>
-            </li>
-            
-            
+          
           </ul>
          
         </nav>
