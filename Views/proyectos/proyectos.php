@@ -82,7 +82,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Grabar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="limpia_Cajas()" data-bs-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

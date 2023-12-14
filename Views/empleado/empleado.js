@@ -120,6 +120,7 @@ var eliminar = (id_empleado) => {
 
 
 var limpia_Cajas = () => {
+    document.getElementById("id_empleado").value = "";
     document.getElementById("cedula").value = "";
     document.getElementById("nombre").value = "";  
     document.getElementById("apellido").value = "";
