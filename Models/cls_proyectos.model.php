@@ -49,7 +49,7 @@ class Clase_Proyectos
         try {
             $con = new Clase_Conectar_Base_Datos();
             $con = $con->ProcedimientoConectar();
-            $cadena = "UPDATE `proyectos` SET `nombre_pro`='$nombre_pro', id_empleado=$id_empleado,`fecha_inicio`=$fecha_inicio,`fecha_fin`=$fecha_fin WHERE `id_proyecto`='$id_proyecto'";
+            $cadena = "UPDATE `proyectos` SET `nombre_pro`='$nombre_pro', id_empleado=$id_empleado,`fecha_inicio`='$fecha_inicio',`fecha_fin`='$fecha_fin' WHERE `id_proyecto`='$id_proyecto'";
             $result = mysqli_query($con, $cadena);
             return "ok";
         } catch (Throwable $th) {

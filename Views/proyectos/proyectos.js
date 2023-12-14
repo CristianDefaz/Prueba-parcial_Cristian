@@ -1,7 +1,7 @@
 //aqui va a estar el codigo de usuarios.model.js
 
 function init() {
-  $("#frm_provincias").on("submit", function (e) {
+  $("#frm_proyectos").on("submit", function (e) {
     guardaryeditar(e);
   });
 }
@@ -13,7 +13,6 @@ $().ready(() => {
 var todos = () => {
   var html = "";
   $.get("../../Controllers/proyectos.controller.php?op=todos", (res) => {
-    console.log(res);
     res = JSON.parse(res);
     $.each(res, (index, valor) => {
       html += `<tr>
@@ -24,13 +23,13 @@ var todos = () => {
                 <td>${valor.fecha_fin}</td>
             <td>
             <button class='btn btn-success' onclick='editar(${
-              valor.ProvinciasId
+              valor.id_proyecto
             })'>Editar</button>
             <button class='btn btn-danger' onclick='eliminar(${
-              valor.ProvinciasId
+              valor.id_proyecto
             })'>Eliminar</button>
             <button class='btn btn-info' onclick='ver(${
-              valor.ProvinciasId
+              valor.id_proyecto
             })'>Ver</button>
             </td></tr>
                 `;
@@ -41,13 +40,13 @@ var todos = () => {
 
 var guardaryeditar = (e) => {
   e.preventDefault();
-  var dato = new FormData($("#frm_provincias")[0]);
+  var dato = new FormData($("#frm_proyectos")[0]);
   var ruta = "";
-  var ProvinciasId = document.getElementById("ProvinciasId").value;
-  if (ProvinciasId > 0) {
-    ruta = "../../Controllers/provincias.controller.php?op=actualizar";
+  var id_proyecto = document.getElementById("id_proyecto").value;
+  if (id_proyecto > 0) {
+    ruta = "../../Controllers/proyectos.controller.php?op=actualizar";
   } else {
-    ruta = "../../Controllers/provincias.controller.php?op=insertar";
+    ruta = "../../Controllers/proyectos.controller.php?op=insertar";
   }
   $.ajax({
     url: ruta,
@@ -58,25 +57,25 @@ var guardaryeditar = (e) => {
     success: function (res) {
       res = JSON.parse(res);
       if (res == "ok") {
-        Swal.fire("provincias", "Registrado con éxito", "success");
+        Swal.fire("Proyecto", "Registrado con éxito", "success");
         todos();
         limpia_Cajas();
       } else {
-        Swal.fire("provincias", "Error al guardo, intente mas tarde", "error");
+        Swal.fire("Proyecto", "Error al guardo, intente mas tarde", "error");
       }
     },
   });
 };
 
-var cargaPaises = () => {
+var cargaempleados= () => {
   return new Promise((resolve, reject) => {
-    $.post("../../Controllers/paises.controller.php?op=todos", (res) => {
+    $.post("../../Controllers/empleado.controller.php?op=todos", (res) => {
       res = JSON.parse(res);
       var html = "";
       $.each(res, (index, val) => {
-        html += `<option value="${val.PaisId}"> ${val.Nombre}</option>`;
+        html += `<option value="${val.id_empleado}"> ${val.cedula+" "+val.nombre}</option>`;
       });
-      $("#PaisId").html(html);
+      $("#id_empleado").html(html);
       resolve();
     }).fail((error) => {
       reject(error);
@@ -84,26 +83,26 @@ var cargaPaises = () => {
   });
 };
 
-var editar = async (ProvinciasId) => {
-  await cargaPaises();
+var editar = async (id_proyecto) => {
+  await cargaempleados();
   $.post(
-    "../../Controllers/provincias.controller.php?op=uno",
-    { ProvinciasId: ProvinciasId },
+    "../../Controllers/proyectos.controller.php?op=uno",
+    { id_proyecto: id_proyecto },
     (res) => {
       res = JSON.parse(res);
 
-      $("#ProvinciasId").val(res.ProvinciasId);
-      $("#PaisId").val(res.PaisesId);
-      //document.getElementById("PaisId").value = res.PaisesId;
+      $("#id_proyecto").val(res.id_proyecto);
+      $("#id_empleado").val(res.id_empleado);
+      //document.getElementById("id_empleado").value = res.PaisesId;
 
 
       $("#Nombre").val(res.Nombre);
     }
   );
-  $("#Modal_provincia").modal("show");
+  $("#Modal_proyecto").modal("show");
 };
 
-var eliminar = (ProvinciasId) => {
+var eliminar = (id_proyecto) => {
   Swal.fire({
     title: "Paises",
     text: "Esta seguro de eliminar la provincia",
@@ -115,12 +114,12 @@ var eliminar = (ProvinciasId) => {
   }).then((result) => {
     if (result.isConfirmed) {
       $.post(
-        "../../Controllers/provincias.controller.php?op=eliminar",
-        { ProvinciasId: ProvinciasId },
+        "../../Controllers/proyectos.controller.php?op=eliminar",
+        { id_proyecto: id_proyecto },
         (res) => {
           res = JSON.parse(res);
           if (res === "ok") {
-            Swal.fire("provincias", "Provincia Eliminado", "success");
+            Swal.fire("Proyecto", "Provincia Eliminado", "success");
             todos();
           } else {
             Swal.fire("Error", res, "error");
@@ -134,9 +133,10 @@ var eliminar = (ProvinciasId) => {
 };
 
 var limpia_Cajas = () => {
-  document.getElementById("ProvinciasId").value = "";
-  document.getElementById("PaisId").value = "";
-  document.getElementById("Nombre").value = "";
-  $("#Modal_provincia").modal("hide");
+  document.getElementById("id_proyecto").value = "";
+  document.getElementById("id_empleado").value = "";
+  document.getElementById("fecha_inicio").value = "";
+  document.getElementById("fecha_fin").value = "";
+  $("#Modal_proyecto").modal("hide");
 };
 init();

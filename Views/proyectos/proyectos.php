@@ -11,7 +11,7 @@
             <h5 class="card-title fw-semibold mb-4">Lista de Proyectos</h5>
 
             <div class="table-responsive">
-                <button type="button" onclick="cargaPaises()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_proyectos">
+                <button type="button" onclick="cargaempleados()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_proyecto">
                     Nuevo Proyecto
                 </button>
                 <table class="table text-nowrap mb-0 align-middle">
@@ -50,10 +50,10 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="Modal_provincia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="Modal_proyecto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" id="frm_provincias">
+            <form method="post" id="frm_proyectos">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Proyectos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -66,8 +66,8 @@
                         <input type="text" required class="form-control" id="nombre_pro" name="nombre_pro" placeholder="Ingrese el nombre del proyecto">
                     </div>
                     <div class="form-group">
-                        <label for="PaisId">Empleado a cargo</label>
-                        <select name="PaisId" id="PaisId" class="form-control">
+                        <label for="id_empleado">Empleado a cargo</label>
+                        <select name="id_empleado" id="id_empleado" class="form-control">
                             <option value="0">Seleccione un pais</option>
                         </select>
                     </div>
